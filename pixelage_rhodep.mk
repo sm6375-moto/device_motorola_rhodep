@@ -12,30 +12,24 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/motorola/rhodep/device.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/pixelage/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := lineage_rhodep
+PRODUCT_NAME := pixelage_rhodep
 PRODUCT_DEVICE := rhodep
 PRODUCT_MANUFACTURER := motorola
 PRODUCT_BRAND := motorola
 PRODUCT_MODEL := moto g82 5G
 
+# Boot animation
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_SCREEN_HEIGHT := 2340
+TARGET_SCREEN_WIDTH := 1080
+
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_PRODUCT=rhodep_g \
-    PRIVATE_BUILD_DESC="rhodep_g-user 13 T1SUS33.1-124-6-9 aafd64 release-keys"
+    DeviceProduct=rhodep_g \
+    BuildDesc=$(call normalize-path-list, "rhodep_g-user 13 T1SUS33.1-124-6-9 aafd64 release-keys")
 
 BUILD_FINGERPRINT := motorola/rhodep_g/rhodep:13/T1SUS33.1-124-6-9/aafd64:user/release-keys
-
-# Flags
-MATRIXX_MAINTAINER := IczYn
-MATRIXX_CHIPSET := SM6375
-MATRIXX_BATTERY := 5000mah
-MATRIXX_DISPLAY := 1080x2400
-MATRIXX_BUILD_TYPE := Official
-WITH_GMS := true
-TARGET_EXCLUDES_AUDIOFX := true
-TARGET_ENABLE_BLUR := true
-
